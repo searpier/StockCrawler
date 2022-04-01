@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="antkiller.mappers.AntKillerMapper">
+
+	<insert id="insertCorpInfo" parameterType="Corp">
+		INSERT INTO CORPINFO
+			(CORPCODE,CORPNAME,STOCKCODE,MODIFYDATE)
+		VALUES
+			(#{corpCode},#{corpName},#{stockCode},#{modifyDate})
+	</insert>
+	
+	<select id="selectCorpCode" resultType="Corp">
+		SELECT CORPCODE,CORPNAME,STOCKCODE,MODIFYDATE FROM CORPINFO
+		WHERE
+			STOCKCODE IS NOT NULL and MODIFYDATE >'20200000'
+	</select>
+	
+	<insert id="insertStockInfo" parameterType="Stock">
+		INSERT INTO STOCKINFO
+			(CORPCODE,CORPNAME,STOCKCODE,PER,EPS,CNSPER,CNSEPS,PBR,DVR,ROA,ROE,SICHONG,PROFIT,CATEGORY
+			)
+			VALUES
+			(#{corpCode},#{corpName},#{stockCode},#{per},#{eps},#{cnsPer},#{cnsEps},#{pbr},#{dvr},#{roa},#{roe},#{sichong},#{profit},#{category}
+			)
+		ON DUPLICATE KEY UPDATE
+			PER=#{per},EPS=#{eps},CNSPER=#{cnsPer},CNSEPS=#{cnsEps},
+            PBR=#{pbr},DVR=#{dvr},ROA=#{roa},ROE=#{roe},SICHONG=#{sichong},PROFIT=#{profit},CATEGORY=#{category}
+			
+	</insert>
+	
+	<insert id="insertPriceInfo" parameterType="Price">
+		INSERT INTO PRICEINFO
+			(CORPCODE,CORPNAME,STOCKCODE,STOCKPRICE,PRICECHANGERATE,MARKETPRICE,HIGHPRICE,LOWPRICE,CRTIME,DEALAMOUNT,MARKETTYPE,YESTERDAY
+			)
+			VALUES
+			(#{corpCode},#{corpName},#{stockCode},#{stockPrice},#{priceChangeRate},#{marketPrice},#{highPrice},#{lowPrice},#{crTime}
+			,#{dealAmount},#{marketType},#{yesterday}
+			)
+	</insert>
+	
+	
+</mapper>

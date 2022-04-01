@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<typeAliases>
+            <typeAlias alias="Corp" type="com.antkiller.jobs.dto.CorpInfo$Corp"></typeAlias>
+            <typeAlias alias="Stock" type="com.antkiller.jobs.dto.StockInfo"></typeAlias>
+            <typeAlias alias="Pick" type="com.antkiller.jobs.dto.PickInfo"></typeAlias>
+            <typeAlias alias="Price" type="com.antkiller.jobs.dto.PriceInfo"></typeAlias>
+            <typeAlias alias="Sold" type="com.antkiller.jobs.dto.SoldInfo"></typeAlias>
+      </typeAliases>
+
+</configuration>
